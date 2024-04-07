@@ -68,6 +68,10 @@ def navbar(request):
           'name': 'facebook',
             'link': 'https://www.facebook.com/your_facebook_page'
         },
+          {
+          'name': 'facebook',
+            'link': 'https://www.facebook.com/your_facebook_page'
+        },
      ]
 
 
