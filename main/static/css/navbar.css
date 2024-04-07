@@ -1,0 +1,225 @@
+
+
+
+.navbar {
+    background-color: #0b5708; /* Dark green background color */
+
+    justify-content: center;
+    position: fixed;
+
+    top: 0; /* Fixed at the top */
+     left: 0; /* Fixed at the left */
+     width: 100%;
+ 
+}
+/* social midia  links  */
+.navbar a {
+    float: left;
+    display: block;
+    color: #f2f2f2; /* White text color */
+    text-align: center;
+ 
+    padding: 7px 35px;
+    text-decoration: none;
+    font-size: 18px;
+    justify-content: space-around;
+    border-radius: 30px;
+    
+}
+
+/* on click */
+.navbar a:hover {
+    background-color: #ddd; /* Light grey background on hover */
+    color: black;
+   
+}
+
+
+
+body{
+min-height: 100vh;
+background-color: blanchedalmond;
+ background-size: cover;
+background-repeat: no-repeat;
+background-position: center;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+
+}
+
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> endentr body <<<<<<<<<<<<<<<<<<<<<<  */
+
+
+
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> nav start  <<<<<<<<<<<<<<<<<<<<<<  */
+
+nav{
+   background-color: #1fb634;
+   box-shadow: 3px 3px 5px rgba(0,0,0,0.1);
+
+
+
+}
+nav img {
+    height: 80px;
+    width: 80px;
+    display:flow-root;
+    margin-left: auto;
+   
+}
+
+nav ul{
+width: 100%;
+list-style: none;
+display: flex;
+justify-content: flex-start;
+align-items: center;
+
+}
+.logoo img {
+    display: none;
+    height: 60px;
+    width: 60px; 
+}
+
+nav li {
+
+    height: 60px;
+   
+
+}
+nav a {
+    height: 100%;
+    padding: 0 30px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    color: black;
+width:  100%;
+}
+
+
+nav a:hover{
+    border-radius: 30px;
+   background-color: #1fb634;
+   
+
+
+}
+
+
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> mobile nav  <<<<<<<<<<<<<<<<<<<<<<  */
+
+.slider {
+position: fixed;
+
+top: 121px;
+right: 0;
+height: 120vh;
+width: 250px;
+z-index: 999;
+ background-color: rgba(246, 246, 243, 0.605);
+
+ box-shadow: -10px 0 10px #d0b7b70f;
+display:none;
+flex-direction: column;
+
+
+}
+
+.slider li{
+    width: 100%;
+    
+}
+.slider a {
+    width: 40%;
+}
+
+.slid1{
+    margin-left: auto;
+   
+ }
+
+
+
+.slidnav a:hover{
+   
+    color: #000000;
+   background-color: #ffffff;
+   
+
+
+}
+ .menu {
+    display: none;
+ }
+
+
+
+
+@media (max-width:800px) {
+
+
+    .navbar a {
+        float: center;
+  
+    
+        color: #f2f2f2; /* White text color */
+        text-align: center;
+     
+        padding: 7px 30px;
+        text-decoration: none;
+        font-size: 15px;
+        
+        
+    }
+
+
+    .hideOnMobile{
+        display: none;
+    }
+    .menu{
+        display: flex;
+    }
+   .slid1 img{
+    display: none;}
+   
+    .slider a {
+        width: 40%;
+    }
+   .logoo img {
+    display: flex;
+   }
+   
+
+      /* swper */
+
+      .slider {
+        position: fixed;
+        
+        top: 120px;
+        
+        height: 120vh;
+        width: 200px;
+        z-index: 999;
+         background-color: rgba(246, 246, 243, 0.605);
+        
+         box-shadow: -10px 0 10px #d0b7b70f;
+        display:none;
+        flex-direction: column;
+        
+        
+        }
+ 
+
+
+
+
+ }
+
+      /* iso start */
+
+     
+      /* iso end */
+
+      
