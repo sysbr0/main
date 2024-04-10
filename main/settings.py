@@ -129,7 +129,11 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 
-
-NEO4J_URI = "bolt://localhost:7687"
-NEO4J_USERNAME = "neo4j"
-NEO4J_PASSWORD = "12345678"
+NEO4J_DATABASES = {
+    'default': {
+        'HOST': 'localhost',
+        'PORT': 7687,
+        'USER': 'neo4j',
+        'PASSWORD': '12345678',
+    }
+}
