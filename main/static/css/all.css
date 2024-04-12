@@ -184,7 +184,7 @@ flex-direction: column;
 
 /* Style for nswper end */
  /* iso start*/
- .container {
+ .containerr {
     text-align: right;
    bottom: 0px;
     width: 900px;
@@ -193,7 +193,7 @@ flex-direction: column;
     border: 2px solid #000000; /* Red border */
     border-radius: 30px 30px 30px 30px; /* Top-left, top-right, bottom-right, bottom-left */
     background-color: rgba(246, 246, 243, 0.605);
-    backdrop-filter:blur(10px) ;
+    backdrop-filter: blur(10px) ;
     box-shadow: -10px 0 10px #d0b7b70f;
    left: 0px;
 }

@@ -1,64 +1,42 @@
 
-{% extends "../base/navbar.html" %}
-
-{% block content %}
-<style>
-
 @import url('https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700');
 @import url('https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
 
-*{
-  box-sizing: border-box;
-}
 
-body {
-    width: 100%;
-  background-color: #D2DBDD;
-}
-.titleblock{
-    box-shadow: 0px 30px 18px -8px rgba(0, 0, 0,0.15);
-     margin: auto;
-    max-width: 90%;
-    height:60px ;
-    background-color: #fff;
-
-     border-radius: 10px;
-    border-style: solid;
-
-    padding: 12px 24px 24px 24px;
-
-}
 
 .boks{
+ overflow-x: scroll;
     display: flex;
-    flex-wrap: nowrap; /* Prevent wrapping of items */
-    padding: 20px 0;
+  
+   width: 100%;
+    padding: 20px;
+   
 }
 .containerbk {
-    overflow-x: auto;
+   
     width: 100%;
-  
-    display: flex;
+    flex-wrap:wrap  ;
+    display: inline-block;
     justify-content: center;
     
 }
+.card__info{
+    max-height: 60px;
+}
+.card__title{
+    font-size: small;
+}
 
-.cards {
- 
-  height: 390px;
+.cardsbk {
+    border-radius: 8pt;
+    box-sizing: border-box;
+  height: 350px;
     display: flex;
     flex-wrap: nowrap; /* Prevent wrapping of items */
-    justify-content: flex-start; /* Adjusted justify-content */
+    justify-content:flex-end ;
 }
 
 
-
-
-.card__clock {
-    width: 15px;
-    vertical-align: middle;
-    fill: #AD7D52;
-}
 .card__time {
     font-size: 12px;
     color: #AD7D52;
@@ -90,7 +68,7 @@ body {
     background-repeat: no-repeat;
     width: 100%;
     position: absolute;
-    height: 250px; /* Adjusted height */
+    height: 210px; /* Adjusted height */
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
     top: 0;
@@ -140,7 +118,10 @@ body {
     text-decoration: none;
     color: #AD7D52;
 }
-
+.row{
+    display: flex;
+    flex-direction: row;
+}
 .card:hover .card__img--hover {
     height: 100%;
     opacity: 0.3;
@@ -155,38 +136,34 @@ body {
     opacity: 1;
 }
 
-</style>
-<div class="titleblock">
-
-    <h3>belong to </h3>
-</div>
-<div class="containerbk">
+.trailer-preview {
+   background-color: #ff3d49;
+   position: absolute;
   
-    <div class="boks">
-     
-    <section class="cards">
+   right: 24px;
+   width: 80px;
+   height: 80px;
+   border-radius: 50%;
+   color: white;
+   font-size: 36px;
+   text-align: center;
+   padding-top: 13px;
+   &:hover, &:disabled, &:active, &:focus {
+      background-color: #ff3d49;
+      color: white;
+   }
   
+}
+.titleblock{
+    box-shadow: 0px 30px 18px -8px rgba(0, 0, 0,0.15);
+     margin: auto;
+    max-width: 99%;
+    height:60px ;
+    background-color: #fff;
 
-        {% for book in books %}
-        <article class="card card--1">
-           
-            <div class="card__img" style="background-image: url('{{ book.image_url }}');"></div>
-            <a href="{{ book.image_url }}" class="card_link">
-                <div class="card__img--hover" style="background-image: url('{{ book.image_url }}');"></div>
-            </a>
-            <div class="card__info">
-    
-                <h3 class="card__title">{{ book.title }}</h3>
-                <span class="card__by">by <a href="{{ book.image_url }}" class="card__author" title="author">{{ book.author }}</a></span>
-            </div>
-        </article>
-        {% endfor %}
+     border-radius: 10px;
+    border-style: solid;
 
-        <!-- Add more card articles here if needed -->
-    </section>
-</div>
-</div>
+    padding: 12px 24px 24px 24px;
 
-{% endblock %}
-
-
+}

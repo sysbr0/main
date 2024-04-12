@@ -14,3 +14,8 @@ class Book(models.Model):
     category_id = models.IntegerField()
     category = models.CharField(max_length=100)
     description = models.TextField()
+
+class Person(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    age = models.IntegerField() 

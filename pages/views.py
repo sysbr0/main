@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from neo4j import GraphDatabase
-
 from .models import Book
 
 # Create your views here.
@@ -92,7 +91,7 @@ def index2(request) :
         },
 
              ]
-     return  render(request, 'pages/index2.html' ,{'books': books})  
+     return  render(request, 'pages/bk.html' ,{'books': books})  
 
 def navbar2(request) :
      
@@ -108,6 +107,54 @@ def indix(request) :
             'year_of_publication': '2002',
             'publisher': 'Oxford University Press',
             'image_url': 'http://images.amazon.com/images/P/0195153448.01.LZZZZZZZ.jpg'
+        },
+        {
+            'ISBN': '2005018',
+            'title': 'Clara Callan',
+            'author': 'Richard Bruce Wright',
+            'year_of_publication': '2001',
+            'publisher': 'HarperFlamingo Canada',
+            'image_url': 'http://images.amazon.com/images/P/0002005018.01.LZZZZZZZ.jpg'
+        },
+        {
+            'ISBN': '2005018',
+            'title': 'Clara Callan',
+            'author': 'Richard Bruce Wright',
+            'year_of_publication': '2001',
+            'publisher': 'HarperFlamingo Canada',
+            'image_url': 'http://images.amazon.com/images/P/0002005018.01.LZZZZZZZ.jpg'
+        },
+        {
+            'ISBN': '2005018',
+            'title': 'Clara Callan',
+            'author': 'Richard Bruce Wright',
+            'year_of_publication': '2001',
+            'publisher': 'HarperFlamingo Canada',
+            'image_url': 'http://images.amazon.com/images/P/0002005018.01.LZZZZZZZ.jpg'
+        },
+        {
+            'ISBN': '2005018',
+            'title': 'Clara Callan',
+            'author': 'Richard Bruce Wright',
+            'year_of_publication': '2001',
+            'publisher': 'HarperFlamingo Canada',
+            'image_url': 'http://images.amazon.com/images/P/0002005018.01.LZZZZZZZ.jpg'
+        },
+        {
+            'ISBN': '2005018',
+            'title': 'Clara Callan',
+            'author': 'Richard Bruce Wright',
+            'year_of_publication': '2001',
+            'publisher': 'HarperFlamingo Canada',
+            'image_url': 'http://images.amazon.com/images/P/0002005018.01.LZZZZZZZ.jpg'
+        },
+        {
+            'ISBN': '2005018',
+            'title': 'Clara Callan',
+            'author': 'Richard Bruce Wright',
+            'year_of_publication': '2001',
+            'publisher': 'HarperFlamingo Canada',
+            'image_url': 'http://images.amazon.com/images/P/0002005018.01.LZZZZZZZ.jpg'
         },
         {
             'ISBN': '2005018',
@@ -134,13 +181,13 @@ def book_list(request):
     neo4j_password = "12345678"
     driver = GraphDatabase.driver(neo4j_uri, auth=(neo4j_username, neo4j_password))
    
-    cypher_query = (
-    "MATCH (b:Book) RETURN b LIMIT 25")
+    cypher_query_all = (
+    "MATCH (b:Book) RETURN b LIMIT 1")
 
      
     with driver.session() as session:
-        result = session.run(cypher_query)
-        books = []
+        result = session.run(cypher_query_all)
+        books1 = []
         for record in result:
             book_data = record['b']
             book = Book(
@@ -158,9 +205,9 @@ def book_list(request):
                 category=book_data['category'],
                 description=book_data['description']
             )
-            books.append(book)
+            books1.append(book)
     
-    return render(request, 'pages/template.html', {'books': books})
+    return render(request, 'pages/bookdetail.html', {'books1': books1})
 
     
 
@@ -179,27 +226,34 @@ def filter(request):
 
 
 
-    return render(request, 'pages/template.html', {'books': books})
-
+    return render(request, 'pages/index2.html', {'books': books})
 
 def fatch(request):
-    
     neo4j_uri = "bolt://localhost:7687"
     neo4j_username = "neo4j"
     neo4j_password = "12345678"
     driver = GraphDatabase.driver(neo4j_uri, auth=(neo4j_username, neo4j_password))
     
-    cypher_query = (
+   
 
-        "MATCH (c:Category {categoryId: 61})<-[:BELONGS_TO]-(book:Book) "
-        "RETURN book, c"
+
+    cypher_query2 = (
+        "MATCH (b:Book) RETURN b ORDER BY rand() LIMIT 25"
     )
-    
-    books = []
+    cypher_query1 = (
+    "MATCH (c:Category {categoryId: 127})<-[:BELONGS_TO]-(book:Book) "
+    "RETURN c, book "
+    "ORDER BY RAND() "
+    "LIMIT 25"
+)
+
+
+    books1 = []
+    books2 = []
     
     with driver.session() as session:
-        result = session.run(cypher_query)
-        for record in result:
+        result1 = session.run(cypher_query1)
+        for record in result1:
             book_data = record['book']
             category_data = record['c']
             book = Book(
@@ -217,6 +271,171 @@ def fatch(request):
                 category=book_data['category'],
                 description=book_data['description']
             )
-            books.append(book)
+            books1.append(book)
+        
+        result2 = session.run(cypher_query2)
+        for record in result2:
+            book_data = record['b']
+            # Process book data as needed
+            book = Book(
+                element_id=book_data['<elementId>'],
+                neo4j_id=book_data['<id>'],
+                avg_age=book_data['AvgOfAge'],
+                avg_book_rating=book_data['AvgOfbookRating'],
+                author=book_data['Book-Author'],
+                title=book_data['Book-Title'],
+                isbn=book_data['ISBN'],
+                image_url=book_data['Image-URL-L'],
+                publisher=book_data['Publisher'],
+                year_of_publication=book_data['Year-Of-Publication'],
+                category_id=book_data['catagoryid'],
+                category=book_data['category'],
+                description=book_data['description']
+            )
+            books2.append(book)
+
+    return render(request, "pages/template.html", {'books1': books1, 'books2': books2})
+
+
+
+# not alll thwe work hers
+
+
+
+
+
+def bookdt(request):
+
+  
+
+
+    # Connect to Neo4j
+    neo4j_uri = "bolt://localhost:7687"
+    neo4j_username = "neo4j"
+    neo4j_password = "12345678"
+    driver = GraphDatabase.driver(neo4j_uri, auth=(neo4j_username, neo4j_password))
+   
+    cypher_query_all = (
+    "MATCH (b:Book) RETURN b LIMIT 1")
+
+     
+    with driver.session() as session:
+        result = session.run(cypher_query_all)
+        books1 = []
+        for record in result:
+            book_data = record['b']
+            book = Book(
+                element_id=book_data['<elementId>'],
+                neo4j_id=book_data['<id>'],
+                avg_age=book_data['AvgOfAge'],
+                avg_book_rating=book_data['AvgOfbookRating'],
+                author=book_data['Book-Author'],
+                title=book_data['Book-Title'],
+                isbn=book_data['ISBN'],
+                image_url=book_data['Image-URL-L'],
+                publisher=book_data['Publisher'],
+                year_of_publication=book_data['Year-Of-Publication'],
+                category_id=book_data['catagoryid'],
+                category=book_data['category'],
+                description=book_data['description']
+            )
+            books1.append(book)
     
-    return render(request, "pages/template.html", {'books': books})
+    return render(request, 'pages/bookdetail.html', {'books1': books1})
+
+def bk(request, iso):
+    # Connect to Neo4j
+    neo4j_uri = "bolt://localhost:7687"
+    neo4j_username = "neo4j"
+    neo4j_password = "12345678"
+    driver = GraphDatabase.driver(neo4j_uri, auth=(neo4j_username, neo4j_password))
+
+    cypher_query = (
+        "MATCH (b:Book {ISO: $iso}) RETURN b LIMIT 1"
+    )
+    with driver.session() as session:
+        result = session.run(cypher_query, iso=iso)
+        books1 = []
+        for record in result:
+            book_data = record['b']
+            book = Book(
+                element_id=book_data['<elementId>'],
+                neo4j_id=book_data['<id>'],
+                avg_age=book_data['AvgOfAge'],
+                avg_book_rating=book_data['AvgOfbookRating'],
+                author=book_data['Book-Author'],
+                title=book_data['Book-Title'],
+                isbn=book_data['ISBN'],
+                image_url=book_data['Image-URL-L'],
+                publisher=book_data['Publisher'],
+                year_of_publication=book_data['Year-Of-Publication'],
+                category_id=book_data['catagoryid'],
+                category=book_data['category'],
+                description=book_data['description']
+            )
+            books1.append(book)
+    return render(request, 'pages/bk.html', {'books1': books1, "title": iso})
+
+
+
+
+
+def bk_detail(request, iso , cid):
+
+    neo4j_uri = "bolt://localhost:7687"
+    neo4j_username = "neo4j"
+    neo4j_password = "12345678"
+    driver = GraphDatabase.driver(neo4j_uri, auth=(neo4j_username, neo4j_password))
+    cypher_query1 = (
+    "MATCH (c:Category {categoryId: $cid})<-[:BELONGS_TO]-(book:Book) "
+    "RETURN c, book ")
+    books1 = []
+    books2 = []
+
+
+        
+    with driver.session() as session:
+        result1 = session.run(cypher_query1,cid=cid)
+        for record in result1:
+            book_data = record['book']
+            category_data = record['c']
+            book = Book(
+                element_id=book_data['<elementId>'],
+                neo4j_id=book_data['<id>'],
+                avg_age=book_data['AvgOfAge'],
+                avg_book_rating=book_data['AvgOfbookRating'],
+                author=book_data['Book-Author'],
+                title=book_data['Book-Title'],
+                isbn=book_data['ISBN'],
+                image_url=book_data['Image-URL-L'],
+                publisher=book_data['Publisher'],
+                year_of_publication=book_data['Year-Of-Publication'],
+                category_id=book_data['catagoryid'],
+                category=book_data['category'],
+                description=book_data['description']
+            )
+            books2.append(book)
+        
+        result2 = session.run("MATCH (b:Book {ISBN: $iso}) RETURN b LIMIT 1", iso=iso)
+        for record in result2:
+            book_data = record['b']
+            # Process book data as needed
+            book = Book(
+                element_id=book_data['<elementId>'],
+                neo4j_id=book_data['<id>'],
+                avg_age=book_data['AvgOfAge'],
+                avg_book_rating=book_data['AvgOfbookRating'],
+                author=book_data['Book-Author'],
+                title=book_data['Book-Title'],
+                isbn=book_data['ISBN'],
+                image_url=book_data['Image-URL-L'],
+                publisher=book_data['Publisher'],
+                year_of_publication=book_data['Year-Of-Publication'],
+                category_id=book_data['catagoryid'],
+                category=book_data['category'],
+                description=book_data['description']
+            )
+            books1.append(book)
+
+
+    return render(request, "pages/bk_detail.html", {"books1": books1 , 'books2' : books2})

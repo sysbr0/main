@@ -1,15 +1,27 @@
 
 
+.navall{
+    position: fixed;
+    top: 0;
+    width: 100%;
+/* Example background color */
+    color: #fff; /* Example text color */
+    padding: 10px 0; /* Adjust padding as needed */
+    z-index: 1000;
 
+   background-color: #1fb634;
+   box-shadow: 3px 3px 5px rgba(0,0,0,0.1);
+
+}
+
+
+/* >>>>>>>>>>>>>>>>>>>>>>>>social midia <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */
 .navbar {
     background-color: #0b5708; /* Dark green background color */
 
-    justify-content: center;
-    position: fixed;
-
-    top: 0; /* Fixed at the top */
-     left: 0; /* Fixed at the left */
-     width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
  
 }
 /* social midia  links  */
@@ -35,17 +47,12 @@
 }
 
 
-
-body{
-min-height: 100vh;
-background-color: blanchedalmond;
- background-size: cover;
-background-repeat: no-repeat;
-background-position: center;
-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+/* ..............................end social midia  ......................................................................*/
 
 
-}
+
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> entr body <<<<<<<<<<<<<<<<<<<<<<  */
+
 
 /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> endentr body <<<<<<<<<<<<<<<<<<<<<<  */
 
@@ -54,6 +61,16 @@ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> nav start  <<<<<<<<<<<<<<<<<<<<<<  */
 
 nav{
+
+
+    position: fixed;
+    top: 0;
+    width: 100%;
+/* Example background color */
+    color: #fff; /* Example text color */
+    padding: 10px 0; /* Adjust padding as needed */
+    z-index: 1000;
+
    background-color: #1fb634;
    box-shadow: 3px 3px 5px rgba(0,0,0,0.1);
 
@@ -117,9 +134,9 @@ top: 121px;
 right: 0;
 height: 120vh;
 width: 250px;
-z-index: 999;
+z-index: 1000;
  background-color: rgba(246, 246, 243, 0.605);
-
+ backdrop-filter:blur(10px) ;
  box-shadow: -10px 0 10px #d0b7b70f;
 display:none;
 flex-direction: column;
@@ -132,7 +149,7 @@ flex-direction: column;
     
 }
 .slider a {
-    width: 40%;
+    width: 100%;
 }
 
 .slid1{
@@ -140,6 +157,7 @@ flex-direction: column;
    
  }
 
+/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> nav start  <<<<<<<<<<<<<<<<<<<<<<  */
 
 
 .slidnav a:hover{
@@ -156,70 +174,10 @@ flex-direction: column;
 
 
 
+/* Style for swper */
 
-@media (max-width:800px) {
-
-
-    .navbar a {
-        float: center;
   
-    
-        color: #f2f2f2; /* White text color */
-        text-align: center;
-     
-        padding: 7px 30px;
-        text-decoration: none;
-        font-size: 15px;
-        
-        
-    }
-
-
-    .hideOnMobile{
-        display: none;
-    }
-    .menu{
-        display: flex;
-    }
-   .slid1 img{
-    display: none;}
-   
-    .slider a {
-        width: 40%;
-    }
-   .logoo img {
-    display: flex;
-   }
-   
-
-      /* swper */
-
-      .slider {
-        position: fixed;
-        
-        top: 120px;
-        
-        height: 120vh;
-        width: 200px;
-        z-index: 999;
-         background-color: rgba(246, 246, 243, 0.605);
-        
-         box-shadow: -10px 0 10px #d0b7b70f;
-        display:none;
-        flex-direction: column;
-        
-        
-        }
  
 
 
 
-
- }
-
-      /* iso start */
-
-     
-      /* iso end */
-
-      
